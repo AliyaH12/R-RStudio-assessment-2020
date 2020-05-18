@@ -1,0 +1,94 @@
+---
+title: "Advanced Bioinformatics assessment 2020"
+author: "p1806435"
+date: "17/05/2020"
+output: html_document
+---
+```{r}
+# Task 3.1 
+#R sum function,and vector specified. It will undertake calculation of the sum of all intergers between 5 and 55
+
+sum(5:55)
+```
+
+```{r}
+#Task 3.2a
+sumfun <- function(n){sum(5:n)}#sumfun function works by assigning n as function to calculate sum with changed n. So assign value of 10 to n, creation and running of sumfun function
+sumfun(10)#sum(5:10)
+```
+
+
+```{r}
+#Task 3.2b
+sumfun <- function(n){sum(5:n)}
+sumfun(20)#sum(5:20) #So assign value of 20 to n, creation and running of sumfun function
+```
+
+
+```{r}
+#Task 3.2c
+sumfun <- function(n){sum(5:n)}
+sumfun(100)#sum(5:100) #So assign value of 100 to n, creation and running of sumfun function
+```
+
+
+```{r}
+#Task 3.3
+fibseq<-seq(1,12)
+fibseq[1]=1 # assignment of fibo value for the first entry 
+fibseq[2]=1 ### assignment of fibo value for the second entry 
+for (i in 3:12) # starting loop to find the entries between the third and twelth
+fibseq[i]<-fibseq[i-1]+fibseq[i-2]
+fibseq# print first 12 entries of the Fibonacci series after the first two entries
+```
+
+
+```{r}
+#Task 3.4
+library(ggplot2)
+ggplot(data = mtcars,#assigning the data being used
+aes(x= as.factor (gear), y= mpg)) +
+geom_boxplot(aes(fill= as.factor(gear) )) + ggtitle(" Box plot of Miles per gallon(mpg) as a function of the number of gears") 
+# ggtitle add title aes aesthetic. as.factor convert variable #into factor
+
+```
+
+
+```{r}
+#3.5 
+cars.lm<-lm(formula = dist~speed, data = cars)
+summary(cars.lm)# to fit linear relationship between speed (in units of mph)and breaking distance (in units of feet) in the distance variable
+# and using summary function as this provides value standard errors for #intercept and slope
+```
+#Intercept = -17.579
+#Standard errors Intercept 6.7584, slope standard error 0.4155
+#x=fitted slope=3.932
+#Speed units = mph, distance units = feet
+```{r}
+#Task 3.6 
+library(ggplot2)
+data("cars")
+#variable assigned as ggplot_1
+ggplot_1 <- ggplot(data = cars, aes(x= speed, y=dist)) + geom_point(color='Blue', size = 1) + geom_smooth(method = "lm",color='Black',formula = "y ~ x")
+#new variable ggplot_2 and add  x,y label and plot title
+ggplot_2 <- ggplot_1 + ggtitle ("Relationship between Speed and Breaking distance")+ xlab("Speed(mph)")+ ylab("distance(ft)")
+ggplot_2
+
+```
+
+`
+```{r}
+#Task 3.7
+library(ggplot2)
+
+data <- cars
+reg_data <- lm(dist ~ speed + I(speed^2), data=data)
+reg_data
+reg_data$coefficients[3]
+```
+
+```
+
+```
+
+
